@@ -1,0 +1,48 @@
+@model IEnumerable<COMP003B.Assignment3.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1 class="text-center">Employee Database</h1>
+
+<p class="text-center">
+    <a asp-action="Create" style="text-decoration: none !important;">Insert New Employee</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Occupation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Occupation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                <a asp-action="Edit" style="text-decoration: none !important;" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" style="text-decoration: none !important;" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" style="text-decoration: none !important;" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
